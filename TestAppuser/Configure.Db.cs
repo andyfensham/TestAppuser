@@ -23,8 +23,8 @@ namespace TestAppuser
             .ConfigureServices((context, services) => {
                 services.AddSingleton<IDbConnectionFactory>(new OrmLiteConnectionFactory(
                     context.Configuration.GetConnectionString("DefaultConnection")
-                    ?? "Server=localhost;User Id=postgres;Password=#@VV3bcom;Database=envision;Pooling=true;MinPoolSize=0;MaxPoolSize=200",
-                    PostgreSqlDialect.Provider));
+                    ?? ":memory:",
+                    SqliteDialect.Provider));
             });
             /* Create non-existing Table and add Seed Data Example
             .ConfigureAppHost(appHost => {
